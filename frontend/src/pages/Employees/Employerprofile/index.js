@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
 import "./index.css";
 import { Spin } from "antd";
-
+import apiUrl from "../../../apiURL";
 const EmployerProfile = () => {
   const jwtToken = Cookies.get("jwt_token");
   const [userData, setUserData] = useState({});
@@ -17,10 +17,7 @@ const EmployerProfile = () => {
         authorization: `Bearer ${jwtToken}`,
       },
     };
-    const response = await fetch(
-      "https://careerconnect-apis.vercel.app/profile/employer",
-      options
-    );
+    const response = await fetch(`${apiUrl}/profile/employer`, options);
     if (response.ok) {
       const data = await response.json();
       setUserData(data);
@@ -42,10 +39,7 @@ const EmployerProfile = () => {
       },
       body: JSON.stringify(userData),
     };
-    const response = await fetch(
-      "https://careerconnect-apis.vercel.app/profile/employer",
-      options
-    );
+    const response = await fetch(`${apiUrl}/profile/employer`, options);
     if (response.ok) {
       await response.json();
     }

@@ -4,14 +4,14 @@ import { useState, useEffect, useCallback } from "react";
 import JobItem from "../../../components/JobItem";
 import { Spin } from "antd";
 import "./index.css";
-
+import apiurl from "../../../apiURL";
 const StudentHome = () => {
   const jwtToken = Cookies.get("jwt_token");
   const [jobsList, setJobsList] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
   const getJobsList = useCallback(async () => {
-    const apiUrl = `https://careerconnect-apis.vercel.app/jobs`;
+    const apiUrl = `${apiurl}/jobs`;
     const options = {
       method: "GET",
       headers: {

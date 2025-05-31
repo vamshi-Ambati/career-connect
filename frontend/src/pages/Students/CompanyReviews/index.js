@@ -5,7 +5,7 @@ import SubmitFeedback from "./SubmitFeedback";
 import Cookies from "js-cookie";
 import { Spin } from "antd";
 import { Navigate, useLocation } from "react-router-dom";
-
+import apiUrl from "../../../apiURL";
 const CompanyReviewItem = ({ item, index }) => {
   return (
     <div key={index} className="company-reviews-item">
@@ -56,10 +56,8 @@ const CompanyReviews = () => {
     const options = {
       method: "GET",
     };
-    const response = await fetch(
-      "https://careerconnect-apis.vercel.app/company-reviews",
-      options
-    );
+
+    const response = await fetch(`${apiUrl}/company-reviews`, options);
     if (response.ok) {
       const data = await response.json();
       setCompaniesReviewsList(data);
@@ -76,10 +74,7 @@ const CompanyReviews = () => {
       },
       body: JSON.stringify({ companyName, rating }),
     };
-    await fetch(
-      "https://careerconnect-apis.vercel.app/company-reviews",
-      options
-    );
+    await fetch(`${apiUrl}/company-reviews`, options);
   };
 
   if (jwtToken === undefined) {

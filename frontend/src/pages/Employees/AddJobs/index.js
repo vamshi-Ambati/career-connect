@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { Navigate } from "react-router-dom";
 import "./index.css";
-
+import apiUrl from "../../../apiURL";
 const AddJob = () => {
   const jwtToken = Cookies.get("jwt_token");
   const [companyName, setCompanyName] = useState("");
@@ -92,10 +92,7 @@ const AddJob = () => {
       },
       body: JSON.stringify(jobDetails),
     };
-    const response = await fetch(
-      "https://careerconnect-apis.vercel.app/jobs",
-      options
-    );
+    const response = await fetch(`${apiUrl}/jobs`, options);
     if (response.ok) {
       alert("Job Added Successfully!");
       setCompanyName("");
@@ -115,7 +112,7 @@ const AddJob = () => {
       setWorkHours("");
       setBenefits("");
       setSkills("");
-      await fetch("https://careerconnect-apis.vercel.app/send-mail", {
+      await fetch(`${apiUrl}/send-mail`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

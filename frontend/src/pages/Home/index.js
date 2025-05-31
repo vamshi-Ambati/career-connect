@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import JobItem from "../../components/JobItem";
 import { Spin } from "antd";
 import "./index.css";
-
+import apiUrl from "../../apiURL";
 const Home = () => {
   const [jobsList, setJobsList] = useState([]);
   const [isLoading, setLoading] = useState(true);
@@ -13,7 +13,7 @@ const Home = () => {
   }, []);
 
   const getJobsList = async () => {
-    const apiUrl = `https://careerconnect-apis.vercel.app/jobs`;
+    const apiUrl = `${apiUrl}/jobs`;
     const options = {
       method: "GET",
       headers: {

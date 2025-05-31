@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Cookie from "js-cookie";
 import "./index.css";
-
+import apiUrl from "../../../apiURL";
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -24,7 +24,7 @@ const Login = () => {
     event.preventDefault();
     const userDetails = { email, password };
     console.log(userDetails);
-    const url = "https://careerconnect-apis.vercel.app/login/employer";
+    const url = `${apiUrl}/login/employer`;
     const options = {
       method: "POST",
       headers: {

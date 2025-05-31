@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 import axios from "axios";
 import { Spin } from "antd";
 import "./index.css";
-
+import apiUrl from "../../../apiURL";
 const EmployerProfile = () => {
   const jwtToken = Cookies.get("jwt_token");
   const [profile, setProfile] = useState({});
@@ -22,10 +22,8 @@ const EmployerProfile = () => {
         authorization: `Bearer ${jwtToken}`,
       },
     };
-    const response = await fetch(
-      "https://careerconnect-apis.vercel.app/profile/student",
-      options
-    );
+    
+    const response = await fetch(`${apiUrl}/profile/student`, options);
     if (response.ok) {
       const data = await response.json();
       setProfile(data);
@@ -112,10 +110,8 @@ const EmployerProfile = () => {
         },
         body: JSON.stringify(updatedProfile),
       };
-      const response = await fetch(
-        "https://careerconnect-apis.vercel.app/profile/student",
-        options
-      );
+      
+      const response = await fetch(`${apiUrl}/profile/student`, options);
       if (response.status === 200) {
         setProfile(updatedProfile);
         setIsEditing(false);

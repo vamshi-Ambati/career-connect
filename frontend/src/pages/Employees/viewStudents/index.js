@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { Spin } from "antd";
 import "./index.css";
-
+import apiUrl from "../../../apiURL";
 const ViewStudents = () => {
   const jwtToken = Cookies.get("jwt_token");
   const [studentsList, setStudentsList] = useState([]);
@@ -19,10 +19,7 @@ const ViewStudents = () => {
         authorization: `Bearer ${jwtToken}`,
       },
     };
-    const response = await fetch(
-      `https://careerconnect-apis.vercel.app/employer/view-students`,
-      options
-    );
+    const response = await fetch(`${apiUrl}/employer/view-students`, options);
     const data = await response.json();
     setStudentsList(data);
     setLoading(false);

@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import "./index.css";
-
+import apiUrl from "../../../apiURL";
 const JobsPosted = () => {
   const navigate = useNavigate();
   const jwtToken = Cookies.get("jwt_token");
@@ -17,10 +17,7 @@ const JobsPosted = () => {
         authorization: `Bearer ${jwtToken}`,
       },
     };
-    const response = await fetch(
-      "https://careerconnect-apis.vercel.app/employer/jobs/posted/",
-      options
-    );
+    const response = await fetch(`${apiUrl}/employer/jobs/posted/`, options);
     if (response.ok) {
       const data = await response.json();
       setJobsPostedList(data);

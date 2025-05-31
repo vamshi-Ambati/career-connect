@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./index.css";
-
+import apiUrl from "../../../apiURL";
 const SignUp = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -14,7 +14,8 @@ const SignUp = () => {
     event.preventDefault();
     const userDetails = { username, password, email };
     console.log(userDetails);
-    const url = "https://careerconnect-apis.vercel.app/register/student";
+    // const url = "http://localhost:8000/register/student";
+    const url = `${apiUrl}/register/student`;
     const options = {
       method: "POST",
       headers: {

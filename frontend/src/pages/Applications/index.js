@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { Spin } from "antd";
 import "./index.css";
+import apiurl from "../.././apiURL";
 
 const Applications = () => {
   const { id } = useParams();
@@ -20,8 +21,9 @@ const Applications = () => {
         authorization: `Bearer ${jwtToken}`,
       },
     };
+    
     const response = await fetch(
-      `https://careerconnect-apis.vercel.app/employer/jobs/posted/${id}`,
+      `${apiurl}/employer/jobs/posted/${id}`,
       options
     );
     const applications = await response.json();

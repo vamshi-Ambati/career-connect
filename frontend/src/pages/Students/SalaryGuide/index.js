@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { Navigate } from "react-router-dom";
 import "./index.css";
-
+import apiUrl from "../../../apiURL";
 const SalaryGuide = () => {
   const jwtToken = Cookies.get("jwt_token");
   const [data, setData] = useState([]);
@@ -16,10 +16,8 @@ const SalaryGuide = () => {
     const options = {
       method: "GET",
     };
-    const response = await fetch(
-      "https://careerconnect-apis.vercel.app/salary-guide",
-      options
-    );
+
+    const response = await fetch(`${apiUrl}/salary-guide`, options);
     if (response.ok) {
       const data = await response.json();
       setData(data);
