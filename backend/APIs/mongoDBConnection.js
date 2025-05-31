@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const MONGO_URI =
-  "mongodb+srv://nithinambati2:yLbT7wHeE14Surh1@cluster0.9qpuxmc.mongodb.net/jobby?retryWrites=true&w=majority";
-
+  // "mongodb+srv://nithinambati2:yLbT7wHeE14Surh1@cluster0.9qpuxmc.mongodb.net/jobby?retryWrites=true&w=majority";
+  "mongodb+srv://vamshiambati:venu9985@cluster0.edeyz18.mongodb.net/career-connect?retryWrites=true&w=majority";
 mongoose
   .connect(MONGO_URI, {})
   .then(() => console.log("MongoDB connected..."))
