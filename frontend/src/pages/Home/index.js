@@ -13,7 +13,6 @@ const Home = () => {
   }, []);
 
   const getJobsList = async () => {
-    const apiUrl = `${apiUrl}/jobs`;
     const options = {
       method: "GET",
       headers: {
@@ -21,7 +20,7 @@ const Home = () => {
       },
     };
 
-    const response = await fetch(apiUrl, options);
+    const response = await fetch(`${apiUrl}/jobs`, options);
     if (response.ok) {
       const fetchedData = await response.json();
       console.log(fetchedData);
